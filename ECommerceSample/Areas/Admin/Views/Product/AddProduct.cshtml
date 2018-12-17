@@ -1,0 +1,49 @@
+﻿@using ECommerceSample.Areas.Admin.Models.ViewModel
+@using ECommerce.Entity;
+@model ProductViewModel
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddProduct</h2>
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<fieldset>
+    <legend>Product</legend>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.ProductName)
+
+        @Html.EditorFor(model => model.Product.ProductName , new { @class = "form-control", @style = "width:200px" })
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.Price)
+
+        @Html.EditorFor(model => model.Product.Price, new { @class = "form-control", @style = "width:200px" })
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.Stock)
+
+        @Html.EditorFor(model => model.Product.Stock, new { @class = "form-control", @style = "width:200px" })
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.Photo)
+
+        <input type="file" name="photo" id="photo" multiple />
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.Category)
+
+        @Html.DropDownListFor(model => model.Product.CategoryId, Model.CategoryList, new { @class = "form-control", @style = "width:200px" })
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Product.Brand)
+
+        @Html.DropDownListFor(model => model.Product.BrandId, Model.BrandList, new { @class = "form-control", @style = "width:200px" })
+    </div>
+    <div>
+        <input type="submit"  value="Create" />
+    </div>
+</fieldset>
+}

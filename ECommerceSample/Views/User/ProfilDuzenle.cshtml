@@ -1,0 +1,43 @@
+﻿@using ECommerce.Entity;
+@model Member
+@{
+    ViewBag.Title = "ProfilDuzenle";
+    Layout = "~/Views/Shared2/_UserLayout.cshtml";
+}
+
+<h2>ProfilDuzenle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(t => t.UserId)
+    @Html.HiddenFor(t => t.Password)
+    @Html.HiddenFor(t => t.RoleId)
+    @Html.AntiForgeryToken()
+    <div>
+        <label>@ViewBag.Mesaj</label>
+    </div>
+    <table class="table table-striped table-hover table-condensed table-responsive table-bordered">
+        <tr>
+            <td>Adınız : </td>
+            <td>@Html.TextBoxFor(t => t.FirstName, new { @class = "form-control", @style = "width:200px", required = "required" })</td>
+        </tr>
+        <tr>
+            <td>Soyadınız : </td>
+            <td>@Html.TextBoxFor(t => t.LastName, new { @class = "form-control", @style = "width:200px", required = "required" })</td>
+        </tr>
+        <tr>
+            <td>Mail Adresiniz : </td>
+            <td>@Html.TextBoxFor(t => t.Email, new { @class = "form-control", @style = "width:200px", @type = "email", required = "required" })</td>
+        </tr>
+        <tr>
+            <td>Adresiniz :</td>
+            <td>@Html.TextBoxFor(t => t.Address, new { @class = "form-control", @style = "width:200px", required = "required"})</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Kaydet" class="btn btn-success" />
+                <a href="~/User/Profilim" class="btn btn-danger"> İptal</a>
+            </td>
+        </tr>
+    </table>
+}

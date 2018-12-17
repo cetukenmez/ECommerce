@@ -1,0 +1,43 @@
+﻿@using ECommerce.Entity;
+@model Member
+@{
+    ViewBag.Title = "Uye";
+    Layout = "~/Views/Shared2/_UserLayout.cshtml";
+}
+
+<h2>Uye</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <label>@ViewBag.Mesaj</label>
+    </div>
+    <table class="table table-striped table-hover table-condensed table-responsive table-bordered">
+        <tr>
+            <td>Adınız : </td>
+            <td>@Html.TextBoxFor(t => t.FirstName , new { @class = "form-control", @style = "width:200px" })</td>
+        </tr>
+        <tr>
+            <td>Soyadınız : </td>
+            <td>@Html.TextBoxFor(t => t.LastName, new { @class = "form-control", @style = "width:200px" })</td>
+        </tr>
+        <tr>
+            <td>Mail Adresiniz : </td>
+            <td>@Html.TextBoxFor(t => t.Email, new { @class = "form-control", @style = "width:200px", @type = "email" })</td>
+        </tr>
+        <tr>
+            <td>Şifreniz : </td>
+            <td>@Html.PasswordFor(t => t.Password, new { @class = "form-control", @style = "width:200px" })</td>
+        </tr>
+        <tr>
+            <td>Hangi Şehir</td>
+            <td>@Html.TextBoxFor(t => t.Address , new { @class = "form-control", @style = "width:200px" })</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Kaydet" class="btn btn-success" />
+            </td>
+        </tr>
+    </table>
+}
